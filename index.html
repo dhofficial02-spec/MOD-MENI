@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Mod Menu</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#111; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh; }
+    .login-box { background:#222; padding:20px; border-radius:10px; width:300px; text-align:center; }
+    input { width:90%; padding:10px; margin:5px 0; border:none; border-radius:5px; }
+    button { width:95%; padding:10px; background:#4caf50; border:none; border-radius:5px; color:#fff; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="key" placeholder="Key"><br>
+    <button onclick="login()">Login</button>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const key = document.getElementById("key").value;
+      
+      if (user === "admin" && key === "dilxit") {
+        window.location.href = "menu.html"; // redirect ke mod menu
+      } else {
+        document.getElementById("msg").innerText = "Username atau Key salah!";
+      }
+    }
+  </script>
+</body>
+</html>
