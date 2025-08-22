@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake FPS Monitor</title>
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .switch {
+      font-size: 18px;
+      margin: 15px;
+    }
+    #fpsBox {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 6px 12px;
+      background: black;
+      color: lime;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 9999;
+    }
+    select {
+      font-size: 16px;
+      padding: 6px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h2>DX Fake FPS Monitor</h2>
+
+  <!-- Switch On/Off -->
+  <label class="switch">
+    <input type="checkbox" id="toggleFps"> Show FPS Monitoring
+  </label>
+  <br>
+
+  <!-- Dropdown Pilihan FPS -->
+  <label for="fpsSelect">Choose FPS:</label>
+  <select id="fpsSelect">
+    <option value="30">30</option>
+    <option value="60">60</option>
+    <option value="90">90</option>
+    <option value="120" selected>120</option>
+    <option value="144">144</option>
+    <option value="240">240</option>
+  </select>
+
+  <!-- Overlay FPS -->
+  <div id="fpsBox">FPS: 120</div>
+
+  <script>
+    const toggle = document.getElementById("toggleFps");
+    const fpsBox = document.getElementById("fpsBox");
+    const fpsSelect = document.getElementById("fpsSelect");
+
+    // Show/Hide Overlay
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        fpsBox.style.display = "block";
+      } else {
+        fpsBox.style.display = "none";
+      }
+    });
+
+    // Update FPS value
+    fpsSelect.addEventListener("change", () => {
+      fpsBox.textContent = "FPS: " + fpsSelect.value;
+    });
+  </script>
+</body>
+</html>
